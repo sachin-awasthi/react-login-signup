@@ -1,0 +1,67 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    header: {
+        backgroundColor: "#343a40"
+    },
+    loginBtn: {
+        backgroundColor: "white",
+        color: "black",
+        fontWeight: "bold",
+        '&:hover': {
+            backgroundColor: "#3333ff",
+            color: "white"
+        }
+    },
+    signupBtn: {
+        backgroundColor: "white",
+        color: "black",
+        fontWeight: "bold",
+        marginLeft: "2%",
+        '&:hover': {
+            backgroundColor: "#3333ff",
+            color: "white"
+        }
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+    },
+}));
+
+function TopBar() {
+    const classes = useStyles();
+    return (
+        <div className={classes.root}>
+            <AppBar position="static" className={classes.header}>
+                <Toolbar>
+                    <Typography variant="h6" className={classes.title}>
+                        Finance Manager
+                    </Typography>
+                    <Tooltip title="Login to your account">
+                        <Button className={classes.loginBtn}>Login</Button>
+                    </Tooltip>
+                    <Tooltip title="Create a new account">
+                        <Button className={classes.signupBtn}>Signup</Button>
+                    </Tooltip>
+                </Toolbar>
+            </AppBar>
+        </div>
+    );
+}
+
+export default TopBar;
