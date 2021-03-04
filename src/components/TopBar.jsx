@@ -5,9 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "bold",
         marginLeft: "2%",
         '&:hover': {
-            backgroundColor: "#3333ff",
+            backgroundColor: "#f50057",
             color: "white"
         }
     },
@@ -45,18 +43,38 @@ const useStyles = makeStyles((theme) => ({
 
 function TopBar() {
     const classes = useStyles();
+    const history = useHistory();
+
+    function onLogin() {
+        history.push({
+            pathname: '/login'
+        });
+    }
+
+    function onSignup() {
+        history.push({
+            pathname: '/signup'
+        });
+    }
+
+    function gotoHome() {
+        history.push({
+            pathname: '/'
+        });
+    }
+
     return (
         <div className={classes.root}>
             <AppBar position="static" className={classes.header}>
                 <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography variant="h6" onClick={gotoHome} className={classes.title}>
                         Finance Manager
                     </Typography>
                     <Tooltip title="Login to your account">
-                        <Button className={classes.loginBtn}>Login</Button>
+                        <Button onClick={onLogin} className={classes.loginBtn}>Login</Button>
                     </Tooltip>
                     <Tooltip title="Create a new account">
-                        <Button className={classes.signupBtn}>Signup</Button>
+                        <Button onClick={onSignup} className={classes.signupBtn}>Signup</Button>
                     </Tooltip>
                 </Toolbar>
             </AppBar>
